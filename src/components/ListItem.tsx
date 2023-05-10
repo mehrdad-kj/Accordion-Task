@@ -5,13 +5,10 @@ import classNames from "classnames";
 type PropsTypes = {
   children: [];
   name: string;
-  status: string | string[];
-  id: number;
-  each: string;
-  idx: number;
-};
+  status: [] | string;
+}
 
-const ListItem = ({ children, name, status }: PropsTypes) => {
+const ListItem = ({ children, name, status } : PropsTypes) => {
   const [hasChild, setHasChild] = useState(false);
   const [accordionOpened, setAccordionOpended] = useState(true);
 
@@ -48,13 +45,13 @@ const ListItem = ({ children, name, status }: PropsTypes) => {
       </div>
       <section className="bg-slate-200 rounded-md mb-3 font-small">
         {hasChild &&
-          children.map(({ id, name, status }: PropsTypes) => (
+          children.map(({ id, name, status }) => (
             <div key={id} className="p-3">
               <div className="flex justify-between p-1">
                 <p>{name}</p>
                 <div className="flex justify-start gap-14 w-[40%]">
                   {status.length > 0 &&
-                    status.map(({ each, idx }: PropsTypes) => (
+                    status.map((each, idx) => (
                       <p
                         key={idx}
                         className={classNames("statusTag", {
