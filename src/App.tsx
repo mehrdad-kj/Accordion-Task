@@ -3,13 +3,13 @@ import ListItems from "./components/ListItems";
 import { useState, useEffect } from "react";
 
 function App() {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<object[]>([]);
 
   const fetchJson = () => {
     fetch("../public/data.json")
-      .then(res => res.json())
-      .then(data => setData(data))
-      .catch(err => console.log(err))
+      .then((res) => res.json())
+      .then((data) => setData(data))
+      .catch((err) => console.log(err));
   };
 
   useEffect(() => {
@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="p-5">
       <ListHeader />
-      <ListItems data={data}/>
+      <ListItems data={data} />
     </div>
   );
 }

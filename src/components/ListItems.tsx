@@ -1,37 +1,26 @@
-// import { useState } from "react";
 import ListItem from "./ListItem";
 
+type PropsTypes = {
+  data: object[];
+};
 
-
-// type ParentTypes = {
-//   data: ChildTypes[];
-// };
-
-// interface Child {
-//   id: number;
-//   name: string;
-//   status: string;
-// }
-
-// type ChildTypes = {
-//   children: Child[];
-//   id: number;
-//   name: string;
-//   status: string;
-// };
-
-interface ParentTypes {
-  data: {
-    id: number,
-  }[]
-}
-
-const ListItems : React.FC <ParentTypes> = ({ data }) => (
-  <section>
-    {data.map((each) => (
-      <ListItem key={each.id} {...each} />
-    ))}
-  </section>
-);
+const ListItems = ({ data }: PropsTypes) => {
+  return (
+    <section>
+      {data.map((each) => (
+        <ListItem
+          children={[]}
+          name={""}
+          status={""}
+          id={0}
+          each={""}
+          idx={0}
+          key={each.id}
+          {...each}
+        />
+      ))}
+    </section>
+  );
+};
 
 export default ListItems;
